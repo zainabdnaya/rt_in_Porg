@@ -1,0 +1,80 @@
+ The commun Word :
+        write(1," where  Fuck I am?\n",23);
+
+Resolution : 
+           printf("W==>%fH==>%f\n",rt.resol.WIDTH,rt.resol.HEIGHT);
+
+
+Ambient   
+
+     /*** Ambient **************************/
+    printf("ambient_colors ==>%f\n", rt.ambient.color.r);
+    printf("ambient_colors ==>%f\n", rt.ambient.color.g);
+    printf("ambient_colors ==>%f\n", rt.ambient.color.b);
+    printf("ambient_intensity ==>%f\n", rt.ambient.ratio);
+
+Camera :
+        /******* the camera configuratiom *************************/
+    printf("cam->look_from1  ==>%f==>%f==>%f\n", rt.cam->look_from.x, rt.cam->origin.y, rt.cam->origin.z);
+    printf("cam_roration ==>%f\n", rt.cam->look_at.x);
+    printf("cam_roration ==>%f\n", rt.cam->look_at.y);
+    printf("cam_roration ==>%f\n", rt.cam->look_at.z);
+    printf("cam_fov ==>%f\n", rt.cam->fov); 
+
+Light 
+          
+    /*************Light Configuration *********************************/
+    // printf("light origin\n ==>%f==>%f==>%f\n", rt.light->position.x, rt.light->position.y, rt.light->position.z);
+    // printf("light_colors ==>%f\n", rt.light->rgb.r);
+    // printf("light_colors ==>%f\n", rt.light->rgb.g);
+    // printf("light_colors ==>%f\n", rt.light->rgb.b);
+    // printf("light_intensity==>%f\n", rt.light->ratio);
+
+
+Sphere 
+       
+    /***********Sphere************/
+    printf("Sphere_Radiuds ===>%f\n", rt.sphere->radius);
+    printf("Sphere_Center==> %f\n",rt.sphere->center.x);
+    printf("Sphere_Center==> %f\n",rt.sphere->center.y);
+    printf("Sphere_Center==> %f\n",rt.sphere->center.z);
+    printf("Sphere_Color==> %f\n",rt.sphere->color.r);
+    printf("Sphere_Color==> %f\n",rt.sphere->color.g);
+    printf("Sphere_Color==> %f\n",rt.sphere->color.b);
+
+Pixels =====> camera configuration 
+
+    //write(1,"fuck u where the hell I am\n",26);
+    // printf("x===>%f\n", rt->pixel_position.x);
+    // printf("y===>%f\n", rt->pixel_position.y);
+    // printf("z===>%f\n", rt->pixel_position.z);
+    // printf("x===>%f\n", cam.direction.x);
+    // printf("===>%f\n", rt->half_width);
+    // printf("cam->look_from 2 x===>%f\n", rt->cam->look_from.x);
+    // printf("cam->look_from 2 y===>%f\n", rt->cam->look_from.y);
+    // printf("cam->look_from 2 z===>%f\n", rt->cam->look_from.z);
+
+
+Print : Specular 
+
+    // printf("Specular==> %f\n",specular.x);
+    // printf("Specular==> %f\n",specular.y);
+    // printf("Specular==> %f\n",specular.z);
+
+
+Print : Diffuse
+
+    // printf("Id==> %f\n",Id.x);
+    // printf("Id==> %f\n",Id.y);
+    // printf("Id==> %f\n",Id.z);
+
+Print : ambiant 
+
+    // printf("ambient_colors ==>%f\n", rt->ambient.color.r);
+    // printf("ambient_colors ==>%f\n", rt->ambient.color.g);
+    // printf("ambient_colors ==>%f\n", rt->ambient.color.b);
+    // printf("ambient_intensity ==>%f\n",rt->ambient.ratio);
+
+    // printf("amb==> %f\n",amb.x);
+    // printf("amb==> %f\n",amb.y);
+    // printf("amb==> %f\n",amb.z);
