@@ -6,7 +6,7 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 21:35:49 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/10/26 13:50:19 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/10/29 14:14:01 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_vector vectorSplit(char *str)
     if (ft_count(split) != 3 || ft_charCount(str, ',') != 2)
     {
         ft_free_split(split);
-        p_error(12);
+        p_error(11);
     }
     w.x = convert_to_double(split[0]);
     w.y = convert_to_double(split[1]);

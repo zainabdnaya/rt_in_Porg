@@ -6,7 +6,7 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 13:45:19 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/10/28 12:14:28 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/10/29 14:53:52 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,27 @@
 
 void      calcul_data(t_minirt *rt)
 {
-        if(rt->witch_object == 1)
+        if(rt->check == 1)
                 calcul_sphere(rt);
-        if (rt->witch_object == 2) 
+        else if (rt->check== 2) 
                 calcul_plan(rt);
-        if (rt->witch_object == 3)
+        else if (rt->check== 3)
                 calcul_triangle(rt);
-        if (rt->witch_object == 4)
+        else if (rt->check == 4)
             calcul_square(rt);
-        if (rt->witch_object == 5)
+        else if (rt->check == 5)
+        //{
+            
+        //write(1," where  Fuck I am?\n",23);
             calcul_cylindre(rt);
+        //}
         else
             return;
 }
 void        Witch_object(t_minirt *rt,double *cmp)
 {
     t_objects *tmp;
+    double var = 0;
     rt->exist = 0;
     tmp = rt->list_obj;
     
@@ -37,19 +42,27 @@ void        Witch_object(t_minirt *rt,double *cmp)
     {
         //print_list(rt->list_obj);
         if(rt->witch_object == 1)
-            rt->hit1 = sphere_equation(rt);
-        if(rt->witch_object == 2)
-            rt->hit1 = plan_equation(rt);
-        if (rt->witch_object == 3)
-            rt->hit1 = triangle_equation(rt);
-        if (rt->witch_object == 4)
-            rt->hit1 = square_equation(rt);
-        if(rt->witch_object == 5)
-            rt->hit1 = cylindre_equation(rt);
-        if (rt->hit1 > 0.0 && rt->hit1 < *cmp)
+            {
+                //write(1, "i am here\n",11);
+            var = sphere_equation(rt);
+            }
+        else if(rt->witch_object == 2)
+            var  = plan_equation(rt);
+        else if (rt->witch_object == 3)
+             var = triangle_equation(rt);
+        else if (rt->witch_object == 4)
+            var = square_equation(rt);
+        else if(rt->witch_object == 5)
         {
+
+            var  = cylindre_equation(rt);
+        }
+        if (var > 0.0 && var < *cmp)
+        {
+            rt->hit1 = var;
             *cmp = rt->hit1;
             rt->list_obj->solution = *cmp;
+            rt->check = rt->witch_object;
             calcul_data(rt);
             //very important to calcul the coloror it won't happen
             object_coloration(&rt->list_obj->light_norm,&rt->list_obj->normal,&rt->list_obj->position,&rt->list_obj->color);

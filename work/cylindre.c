@@ -6,7 +6,7 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 16:23:59 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/10/28 14:03:12 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/10/29 14:05:12 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,9 @@ void    calcul_cylindre(t_minirt *rt)
     scal.vect1 = vectorScale(rt->list_obj->cy_normal,rt->m);
     scal.vect2 =  vectorSub(scal.vect,scal.vect1);
     rt->list_obj->normal = vectorNorme(scal.vect2);
-       
+    if(vectorDot(rt->ray_direction,rt->list_obj->normal) > 0.0)
+                rt->list_obj->normal = vectorScale(rt->list_obj->normal,(-1));
+    rt->list_obj->normal = vectorNorme(rt->list_obj->normal);
 
     //  printf("normal  x===>%f\n", rt->list_obj->normal.x);
     //  printf("normal  y===>%f\n", rt->list_obj->normal.y);

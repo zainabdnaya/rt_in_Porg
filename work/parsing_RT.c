@@ -6,7 +6,7 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 21:48:53 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/10/28 10:33:13 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/10/29 14:33:06 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void configuration(t_minirt *rt)
         resolution_parsing(rt);
     else if (ft_samestr(rt->pars.splitrest[0], "A"))
         ambient_parsing(rt);
-    else if (ft_samestr(rt->pars.splitrest[0], "C"))
+    else if (ft_samestr(rt->pars.splitrest[0], "c"))
         camera_parsing(rt);
-    else if (ft_samestr(rt->pars.splitrest[0], "L"))
+    else if (ft_samestr(rt->pars.splitrest[0], "l"))
         light_parsing(rt);
     else if (ft_samestr(rt->pars.splitrest[0], "sp"))
         sphere_parsing(rt);
@@ -33,8 +33,8 @@ void configuration(t_minirt *rt)
             square_parsing(rt);
     else if(ft_samestr(rt->pars.splitrest[0],"cy"))
             cylindre_parsing(rt);
-    else
-    error(5);
+    // else
+    // error(5);
 }
 
 void parsing_RT(char *file, t_minirt *rt)

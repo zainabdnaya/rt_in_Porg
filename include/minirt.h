@@ -6,7 +6,7 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 22:06:47 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/10/28 12:18:04 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/10/29 14:24:49 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ typedef struct s_minirt
     t_vector      position;
     double         m;
     t_vector       pol;
-   
+    int            check;
 
   
 }t_minirt;

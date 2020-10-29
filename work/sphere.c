@@ -6,7 +6,7 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 00:17:23 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/10/28 12:34:40 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/10/29 14:20:46 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,6 @@ void        sphere_parsing(t_minirt *rt)
         obj_error(22);
     sphere->color  = colorSplit(rt,rt->pars.splitrest[3]); 
     rt->witch_object = 1;
-       printf("Sphere_Center==> %f\n",sphere->center.x);
-    printf("Sphere_Center==> %f\n",sphere->center.y);
-    printf("Sphere_Center==> %f\n",sphere->center.z);
     add_objects(&rt->list_obj, copy_spher(sphere->center, sphere->radius, sphere->color));
  
     //print_list(rt->list_obj);
