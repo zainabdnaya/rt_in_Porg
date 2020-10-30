@@ -6,7 +6,7 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 20:32:36 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/10/28 12:23:36 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/10/30 13:25:45 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_objects *copy_spher(t_vector center, double radius, t_color color)
     obj->center = center;
     obj->radius = radius;
     obj->color  = color;
+    obj->witch_objects = 1;
 
     obj->next = NULL;
     return (obj);
@@ -36,6 +37,7 @@ t_objects *copy_plan(t_vector point,t_vector norm, t_color color)
     obj->point = point;
     obj->p_norm = norm;
     obj->color  = color;
+    obj->witch_objects = 2;
 
     obj->next = NULL;
     return (obj);
@@ -53,6 +55,7 @@ t_objects *copy_triangle(t_vector point_a, t_vector point_b, t_vector point_c, t
     obj->point_b = point_b;
     obj->point_c = point_c;
     obj->color = color;
+    obj->witch_objects = 3;
 
     obj->next = NULL;
     return (obj);
@@ -68,6 +71,7 @@ t_objects *copy_square(t_vector center, t_vector normal,double side_size, t_colo
     obj->normal = normal;
     obj->side_size = side_size;
     obj->color = color;
+    obj->witch_objects = 4;
 
     obj->next = NULL;
     return (obj);
@@ -84,6 +88,7 @@ t_objects *copy_cylindre(t_vector center, t_vector normal,double diameter,double
     obj->diameter = diameter;
     obj->height = height;
     obj->color = color;
+    obj->witch_objects = 5;
 
     obj->next = NULL;
     return (obj);
@@ -102,12 +107,12 @@ void add_objects(t_objects  **head, t_objects  *new_obj)
         while (new->next)
             new = new->next;
         new->next = new_obj;
-          //new_obj->next = NULL;
+        new_obj->next = NULL;
     }
     else
        {           
 
-          //new_obj->next = NULL;
+          new_obj->next = NULL;
             *head = new_obj; 
        } 
     

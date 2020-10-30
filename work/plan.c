@@ -6,7 +6,7 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 21:59:41 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/10/26 10:06:16 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/10/30 10:30:37 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void plan_parsing(t_minirt *rt)
     if((plan->norm.x > 1 ||  plan->norm.x < -1) || (plan->norm.y > 1 || plan->norm.y < -1) || (plan->norm.z > 1 || plan->norm.z < -1))
            obj_error(24);     
     plan->color = colorSplit(rt, rt->pars.splitrest[3]);
-    rt->witch_object = 2;
+    rt->it_plan = 2;
     tmp = copy_plan(plan->point,plan->norm,plan->color);
     add_objects(&rt->list_obj,tmp);
     //write(1," where  Fuck I am?\n",23);

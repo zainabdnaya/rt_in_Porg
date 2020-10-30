@@ -6,7 +6,7 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 00:17:23 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/10/29 14:20:46 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/10/30 13:23:50 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,22 @@ void        sphere_parsing(t_minirt *rt)
     if ( sphere->radius < 0 )
         obj_error(22);
     sphere->color  = colorSplit(rt,rt->pars.splitrest[3]); 
-    rt->witch_object = 1;
+    // rt->it_sphere = 1;
     add_objects(&rt->list_obj, copy_spher(sphere->center, sphere->radius, sphere->color));
  
     //print_list(rt->list_obj);
     
 }
 
-double sphere_equation(t_minirt *rt)
+double sphere_equation(t_minirt *rt,t_objects *list_obj)
 {
     //print_list(rt->list_obj);
     t_use scal;
     
     scal.scal1 = vectorDot(rt->ray_direction, rt->ray_direction); // A
-    scal.dist = vectorSub(rt->cam->look_from, rt->list_obj->center);
+    scal.dist = vectorSub(rt->cam->look_from, list_obj->center);
     scal.scal2 = 2 * vectorDot(rt->ray_direction, scal.dist); // B
-    scal.rst = vectorDot(scal.dist, scal.dist) - (pow(rt->list_obj->radius, 2)); // C 
+    scal.rst = vectorDot(scal.dist, scal.dist) - (pow(list_obj->radius, 2)); // C 
     scal.delta = (pow(scal.scal2, 2)) - (4 * scal.scal1 * scal.rst);
     //printf("===>solution: %f\n",scal.delta);                            
     if (scal.delta < 0)
@@ -69,13 +69,13 @@ double sphere_equation(t_minirt *rt)
 
 
 
-void      calcul_sphere(t_minirt *rt)
+void      calcul_sphere(t_minirt *rt,t_objects *list_obj,double solution)
 {
     t_use scal;
 
-        scal.one_scal = vectorScale(rt->ray_direction, rt->list_obj->solution);
+        scal.one_scal = vectorScale(rt->ray_direction, solution);
         rt->list_obj->position = vectorAdd(rt->cam->look_from, scal.one_scal);
-        t_vector discrt = vectorSub(rt->list_obj->position, rt->list_obj->center);
-        rt->list_obj->normal = vectorNorme((discrt));
+        t_vector discrt = vectorSub(list_obj->position, list_obj->center);
+        list_obj->normal = vectorNorme((discrt));
     
 }

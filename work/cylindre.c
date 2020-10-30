@@ -6,7 +6,7 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 16:23:59 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/10/29 14:05:12 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/10/30 10:31:07 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void  cylindre_parsing(t_minirt *rt)
     cylindre->color = colorSplit(rt,rt->pars.splitrest[3]);
     cylindre->diameter = convert_to_double(rt->pars.splitrest[4]);
     cylindre->height = convert_to_double(rt->pars.splitrest[5]);
-    rt->witch_object = 5;
+    rt->it_cylindre = 5;
     add_objects(&rt->list_obj,copy_cylindre(cylindre->center,cylindre->cy_normal,cylindre->diameter, cylindre->height,cylindre->color));
 }
 

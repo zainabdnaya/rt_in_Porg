@@ -6,7 +6,7 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 21:54:17 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/10/26 12:29:38 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/10/30 10:30:27 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int main(int argc,char **argv)
         error(2);
     ft_bzero(&rt,sizeof(t_minirt));
      rt.name = argv[1];
+     initial_all_objects(&rt);
     parsing_RT(argv[1],&rt);
     rt.mlx.mlx_ptr = mlx_init();
     init_graphics(&rt, &mlx, rt.resol.WIDTH, rt.resol.HEIGHT);

@@ -6,7 +6,7 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 12:43:14 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/10/27 11:27:55 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/10/30 11:54:27 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,23 +87,44 @@ void print_list_tr(t_objects *ip)
 }
 
 
-void    print_list(t_objects *ip)
+void    print_list(t_minirt *rt,t_objects *ip)
 {
     while(ip != NULL)
     {
-        printf("triangle->point_a==> %f\n", ip->point_a.x);
-        printf("triangle->point_a==> %f\n", ip->point_a.y);
-        printf("triangle->point_a==> %f\n", ip->point_a.z);
+    //     printf("triangle->point_a==> %f\n", ip->point_a.x);
+    //     printf("triangle->point_a==> %f\n", ip->point_a.y);
+    //     printf("triangle->point_a==> %f\n", ip->point_a.z);
     
-        printf("plan->p_norm==> %f\n", ip->p_norm.x);
-        printf("plan->p_norm==> %f\n", ip->p_norm.y);
-        printf("plan->p_norm==> %f\n", ip->p_norm.z);
+    //     printf("plan->p_norm==> %f\n", ip->p_norm.x);
+    //     printf("plan->p_norm==> %f\n", ip->p_norm.y);
+    //     printf("plan->p_norm==> %f\n", ip->p_norm.z);
         
-        printf("sphetre->Radiuds ===>%f\n", ip->radius);
+    //     printf("sphetre->Radiuds ===>%f\n", ip->radius);
 
-        printf("square->Radiuds ===>%f\n", ip->side_size);
+    //     printf("square->Radiuds ===>%f\n", ip->side_size);
 
-            ip = ip->next;
+  
+
+        if(rt->check == 1)
+            {
+                write(1, "i am in sphere\n",15);
+            }
+        if(rt->it_plan == 2)
+                write(1, "i am in Plan \n",15);
+        if (rt->it_triangle== 3)
+                write(1, "i am in Triangle\n",15);
+        if (rt->check == 4)
+            {
+                            write(1, "i am in square\n",15);
+              //  rt->result_color = test;
+            }
+             
+         if(rt->it_cylindre == 5)
+        {
+
+                write(1, "i am in Cylindre\n",15);
+        }
+                  ip = ip->next;
     }
     printf("\n");
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   triangle.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zdnaya <diyanazizo13@gmail.com>            +#+  +:+       +#+        */
+/*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 10:07:48 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/10/26 22:05:54 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/10/30 10:31:33 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void triangle_parsing(t_minirt *rt)
     triangle->point_b = vectorSplit(rt->pars.splitrest[2]);
     triangle->point_c = vectorSplit(rt->pars.splitrest[3]);
     triangle->color = colorSplit(rt, rt->pars.splitrest[4]);
-    rt->witch_object = 3;
+    rt->it_triangle = 3;
     add_objects(&rt->list_obj, copy_triangle(triangle->point_a, triangle->point_b, triangle->point_c, triangle->color));
 }
 

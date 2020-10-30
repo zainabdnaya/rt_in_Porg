@@ -6,7 +6,7 @@
 /*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 22:06:47 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/10/29 14:24:49 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/10/30 13:17:34 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ typedef struct s_objects
     double      diameter;
     double      height;
     t_vector    cy_normal;
+    int         witch_objects;
 
 
     struct s_objects   *next;
@@ -125,6 +126,13 @@ typedef struct s_minirt
     double         m;
     t_vector       pol;
     int            check;
+    int             it_sphere;
+    int             it_plan; 
+    int             it_cylindre;
+    int             it_square;
+    int             it_triangle;
+    t_color         color_result;
+
 
   
 }t_minirt;
@@ -172,19 +180,20 @@ void        square_parsing(t_minirt *rt);
 void        cylindre_parsing(t_minirt *rt);
 /******************************************************************/
 /*************Intersection  Objects ******************************/
-double          sphere_equation(t_minirt *rt);
+double          sphere_equation(t_minirt *rt,t_objects *list_obj);
 double          plan_equation(t_minirt *rt);
 double          triangle_equation(t_minirt *rt);
-double          square_equation(t_minirt *rt);
+double          square_equation(t_minirt *rt,t_objects *list_obj);
 double          cylindre_equation(t_minirt *rt);
 
 /******************************************************************/
 /**************************Objects*********************************/
-void            calcul_sphere(t_minirt *rt);
+void            calcul_sphere(t_minirt *rt,t_objects *list_obj,double solution);
 void            calcul_plan(t_minirt *rt);
 void            calcul_triangle(t_minirt *rt);
-void            calcul_square(t_minirt *rt);
+void            calcul_square(t_minirt *rt,t_objects *list_obj,double solution);
 void            calcul_cylindre(t_minirt *rt);
+void            initial_all_objects(t_minirt *rt);
 /******************************************************************/
 
 /****************Phong*********************************************/
@@ -217,11 +226,11 @@ int             ft_countObjects(t_list *lst);
 t_objects       *copy_plan(t_vector point,t_vector norm, t_color color);
 t_objects       *copy_triangle(t_vector point_a, t_vector point_b, t_vector point_c, t_color color);
 t_objects       *copy_square(t_vector center, t_vector normal, double side_size, t_color color);
+t_objects       *copy_cylindre(t_vector center, t_vector normal,double diameter,double height,t_color color);
 void            print_list_sphere(t_objects *ip);
 void            print_list_pal(t_objects *ip);
 void            print_list_tr(t_objects *ip);
-void            print_list(t_objects *ip);
-t_objects *copy_cylindre(t_vector center, t_vector normal,double diameter,double height,t_color color);
+void    print_list(t_minirt *rt,t_objects *ip);
 
 
     /******************************************************************/

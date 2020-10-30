@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   square.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zdnaya <diyanazizo13@gmail.com>            +#+  +:+       +#+        */
+/*   By: zdnaya <zdnaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 22:06:20 by zdnaya            #+#    #+#             */
-/*   Updated: 2020/10/27 00:41:52 by zdnaya           ###   ########.fr       */
+/*   Updated: 2020/10/30 13:24:09 by zdnaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,27 +31,28 @@ void square_parsing(t_minirt *rt)
         obj_error(24);
     square->side_size = convert_to_double(rt->pars.splitrest[3]);
     square->color = colorSplit(rt, rt->pars.splitrest[4]);
-    rt->witch_object = 4;
+    // rt->it_square = 4;
     add_objects(&rt->list_obj, copy_square(square->center, square->normal, square->side_size, square->color));
     //write(1," where  Fuck I am?\n",23);
 }
 
-double  square_equation(t_minirt *rt)
+double  square_equation(t_minirt *rt,t_objects *list_obj)
 {
     t_use scal;
     
-    scal.one = vectorDot(rt->ray_direction,rt->list_obj->normal);
+    //write(1," where I am?\n",12);
+    scal.one = vectorDot(rt->ray_direction,list_obj->normal);
     if(scal.one != 0)
     {
-        scal.up = vectorSub(rt->cam->look_from,rt->list_obj->sq_center);
-        rt->solution = (-1/scal.one)*vectorDot(scal.up,rt->list_obj->normal);
+        scal.up = vectorSub(rt->cam->look_from,list_obj->sq_center);
+        rt->solution = (-1/scal.one)*vectorDot(scal.up,list_obj->normal);
     }
     if(rt->solution > 0)
     {
         scal.produit = vectorScale(rt->ray_direction, rt->solution);
         scal.point_pos = vectorAdd(rt->cam->look_from,scal.produit);
-        scal.q_ed =  vectorSub(scal.point_pos,rt->list_obj->sq_center);
-        scal.edge = rt->list_obj->side_size/ 2;
+        scal.q_ed =  vectorSub(scal.point_pos,list_obj->sq_center);
+        scal.edge = list_obj->side_size/ 2;
 
         if (fabs(scal.q_ed.x) > scal.edge || fabs(scal.q_ed.y) > scal.edge || fabs(scal.q_ed.z) > scal.edge)
             return (0);
@@ -60,12 +61,12 @@ double  square_equation(t_minirt *rt)
     return(0);
 }
 
-void calcul_square(t_minirt *rt)
+void calcul_square(t_minirt *rt,t_objects *list_obj,double solution )
 {
     t_use scal;
 
-    scal.one_scal = vectorScale(rt->ray_direction, rt->list_obj->solution);
-    rt->list_obj->position = vectorAdd(rt->cam->look_from, scal.one_scal);
-    rt->list_obj->normal = vectorNorme(rt->list_obj->normal);
+    scal.one_scal = vectorScale(rt->ray_direction, solution);
+    list_obj->position = vectorAdd(rt->cam->look_from, scal.one_scal);
+    list_obj->normal = vectorNorme(list_obj->normal);
     //rt->l_norm = vectorSub(rt->light->position, rt->list_obj->position);
 }
